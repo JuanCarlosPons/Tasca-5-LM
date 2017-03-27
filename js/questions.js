@@ -34,33 +34,33 @@ window.onload = function() {
     }
 
     //LEER XML de xml/questions.xml
- var xhttp = new XMLHttpRequest();
- xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-   gestionarXml(this);
-  }
- };
- xhttp.open("GET", "xml/questions.xml", true);
- xhttp.send();
- 
-  //LEER XSL de xml/questions.xml
- var xhttp2 = new XMLHttpRequest();
- xhttp2.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-   xslDoc=this.responseXML;
-  }
- };
- xhttp2.open("GET", "xml/questions.xsl", true);
- xhttp2.send();
- 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            gestionarXml(this);
+        }
+    };
+    xhttp.open("GET", "xml/questions.xml", true);
+    xhttp.send();
+
+    //LEER XSL de xml/questions.xml
+    var xhttp2 = new XMLHttpRequest();
+    xhttp2.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            xslDoc = this.responseXML;
+        }
+    };
+    xhttp2.open("GET", "xml/questions.xsl", true);
+    xhttp2.send();
+
 }
 //****************************************************************************************************
 // Recuperamos los datos del fichero XML xml/preguntas.xml
 // xmlDOC es el documento leido XML.
 function gestionarXml(dadesXml) {
     xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
-    
-	//TEXT1
+
+    //TEXT1
     //Recuperamos el título y la respuesta correcta de Input, guardamos el texto secreto
     var pregunta001 = xmlDoc.getElementsByTagName("title")[0].innerHTML;
     ponerDatosInputHtml1(pregunta001);
@@ -71,22 +71,22 @@ function gestionarXml(dadesXml) {
     ponerDatosInputHtml2(pregunta002);
     textoSecreto2 = xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue;
 
-       //SELECT1
- //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect) 
- var pregunta003=xmlDoc.getElementsByTagName("title")[2].innerHTML;
- var xpath="/questions/question[@id='profe003']/option";
- var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
- ponerDatosSelectHtml1(pregunta003,nodesSelect1);
- //guardamos la respuesta correcta
- respuestaSelect1=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    //SELECT1
+    //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect) 
+    var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
+    var xpath = "/questions/question[@id='profe003']/option";
+    var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosSelectHtml1(pregunta003, nodesSelect);
+    //guardamos la respuesta correcta
+    respuestaSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
-    var xpath="/questions/question[@id='profe004']/option";
-    var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-	ponerDatosSelectHtml2(pregunta004,nodesSelect2);
-	//Guardar respuestaSelect2 correcta
-	respuestaSelect2=parseInt(xmlDoc.getElementByTagName("answer")[3].innerHTML);
+    var xpath = "/questions/question[@id='profe004']/option";
+    var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosSelectHtml2(pregunta004, nodesSelect);
+    //Guardar respuestaSelect2 correcta
+    respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[3].innerHTML);
 
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
@@ -108,27 +108,27 @@ function gestionarXml(dadesXml) {
     ponerDatosMultiSelectHtml2(pregunta006, opcionesMultiSelect2);
     respuestaMultiSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
-	     //CHECKBOX
-	 //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect)
-	 var pregunta007 = xmlDoc.getElementsByTagName("title")[6].innerHTML;
-	 var xpath="/questions/question[@id='profe007']/option";
-	 var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
-	 ponerDatosCheckboxHtml1(pregunta007,nodesCheckbox);
-	 //guardamos las respuestas correctas
-	 var nres = xmlDoc.getElementById("profe007").getElementsByTagName('answer').length;
-	 for (i = 0; i < nres; i++) { 
-	  respuestasCheckbox1[i]=xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
-	 }
+    //CHECKBOX
+    //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect)
+    var pregunta007 = xmlDoc.getElementsByTagName("title")[6].innerHTML;
+    var xpath = "/questions/question[@id='profe007']/option";
+    var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosCheckboxHtml1(pregunta007, nodesCheckbox);
+    //guardamos las respuestas correctas
+    var nres = xmlDoc.getElementById("profe007").getElementsByTagName('answer').length;
+    for (i = 0; i < nres; i++) {
+        respuestasCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
+    }
 
     //CHECKBOX2
     var pregunta008 = xmlDoc.getElementsByTagName("title")[7].innerHTML;
-    var xpath="/questions/question[@id='profe008']/option";
-	var nodesCheckbox1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
-	ponerDatosCheckboxHtml(pregunta008,nodesCheckbox2);
-	//guardamos las respuestas correctas
-	var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
-	for (i = 0; i < nres; i++) { 
-	respuestasCheckbox2[i]=xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
+    var xpath = "/questions/question[@id='profe008']/option";
+    var nodesCheckbox1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosCheckboxHtml(pregunta008, nodesCheckbox2);
+    //guardamos las respuestas correctas
+    var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
+    for (i = 0; i < nres; i++) {
+        respuestasCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
     }
 
     //RADIO1
@@ -244,32 +244,34 @@ function ponerDatosInputHtml2(t) {
     document.getElementById("pregunta002").innerHTML = t;
 }
 
-function ponerDatosSelectHtml1(t,nodes){
-  document.getElementById("pregunta003").innerHTML=t;
-  var select = document.getElementsByTagName("select")[0];
-  var result = nodes.iterateNext();
-  i=0;
-  while (result) {
-   var option = document.createElement("option");
-   option.text = result.innerHTML;
-   option.value=i+1; i++;
-   select.options.add(option);
-   result = nodes.iterateNext();
-  }  
+function ponerDatosSelectHtml1(t, nodes) {
+    document.getElementById("pregunta003").innerHTML = t;
+    var select = document.getElementsByTagName("select")[0];
+    var result = nodes.iterateNext();
+    i = 0;
+    while (result) {
+        var option = document.createElement("option");
+        option.text = result.innerHTML;
+        option.value = i + 1;
+        i++;
+        select.options.add(option);
+        result = nodes.iterateNext();
+    }
 }
 
-function ponerDatosSelectHtml2(t,nodes){
-  document.getElementById("pregunta004").innerHTML=t;
-  var select = document.getElementsByTagName("select")[1];
-  var result = nodes.iterateNext();
-  i=0;
-  while (result) {
-   var option = document.createElement("option");
-   option.text = result.innerHTML;
-   option.value=i+1; i++;
-   select.options.add(option);
-   result = nodes.iterateNext();
-  }  
+function ponerDatosSelectHtml2(t, nodes) {
+    document.getElementById("pregunta004").innerHTML = t;
+    var select = document.getElementsByTagName("select")[1];
+    var result = nodes.iterateNext();
+    i = 0;
+    while (result) {
+        var option = document.createElement("option");
+        option.text = result.innerHTML;
+        option.value = i + 1;
+        i++;
+        select.options.add(option);
+        result = nodes.iterateNext();
+    }
 }
 
 function ponerDatosMultiSelectHtml1(t, opt) {
@@ -294,24 +296,25 @@ function ponerDatosMultiSelectHtml2(t, opt) {
     }
 }
 
-function ponerDatosCheckboxHtml1(t,nodes){
- var checkboxContainer=document.getElementById('checkboxDiv1');
- document.getElementById('pregunta007').innerHTML = t;
-  var result = nodes.iterateNext();
-  i=0;
-  while (result) {
-   var input = document.createElement("input");
-   var label = document.createElement("label");   
-   label.innerHTML = result.innerHTML
-   label.setAttribute("for", "color_"+i);
-   input.type="checkbox";
-   input.name="color";
-   input.id="color_"+i; i++;
-   checkboxContainer.appendChild(input);
-   checkboxContainer.appendChild(label);
-   checkboxContainer.appendChild(document.createElement("br"));
-   result = nodes.iterateNext();
-  }
+function ponerDatosCheckboxHtml1(t, nodes) {
+    var checkboxContainer = document.getElementById('checkboxDiv1');
+    document.getElementById('pregunta007').innerHTML = t;
+    var result = nodes.iterateNext();
+    i = 0;
+    while (result) {
+        var input = document.createElement("input");
+        var label = document.createElement("label");
+        label.innerHTML = result.innerHTML
+        label.setAttribute("for", "color_" + i);
+        input.type = "checkbox";
+        input.name = "color";
+        input.id = "color_" + i;
+        i++;
+        checkboxContainer.appendChild(input);
+        checkboxContainer.appendChild(label);
+        checkboxContainer.appendChild(document.createElement("br"));
+        result = nodes.iterateNext();
+    }
 }
 
 function ponerDatosCheckboxHtml2(t, opt) {
