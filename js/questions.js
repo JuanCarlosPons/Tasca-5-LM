@@ -259,18 +259,18 @@ function ponerDatosSelectHtml1(t, nodes) {
     }
 }
 
-function ponerDatosSelectHtml2(t, nodes) {
+function ponerDatosSelectHtml1(t, nodes) {
     document.getElementById("pregunta004").innerHTML = t;
-    var select = document.getElementsByTagName("select")[1];
-    var result = nodes.iterateNext();
+    var select2 = document.getElementsByTagName("select")[1];
+    var result2 = nodes.iterateNext();
     i = 0;
-    while (result) {
+    while (result2) {
         var option = document.createElement("option");
-        option.text = result.innerHTML;
+        option.text = result2.innerHTML;
         option.value = i + 1;
         i++;
-        select.options.add(option);
-        result = nodes.iterateNext();
+        select2.options.add(option);
+        result2 = nodes.iterateNext();
     }
 }
 
