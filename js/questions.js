@@ -259,7 +259,7 @@ function ponerDatosSelectHtml1(t, nodes) {
     }
 }
 
-function ponerDatosSelectHtml1(t, nodes) {
+function ponerDatosSelectHtml2(t, nodes) {
     document.getElementById("pregunta004").innerHTML = t;
     var select2 = document.getElementsByTagName("select")[1];
     var result2 = nodes.iterateNext();
