@@ -43,15 +43,6 @@ window.onload = function() {
     xhttp.open("GET", "xml/questions.xml", true);
     xhttp.send();
 	
-	//LEER XSL de xml/questions.xml
-	var xhttp2 = new XMLHttpRequest();
-	xhttp2.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			xslDoc=this.responseXML;
-		}
-	};
-	xhttp2.open("GET", "xml/questions.xsl", true);
-	xhttp2.send();
 	
 }
 
