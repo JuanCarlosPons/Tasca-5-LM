@@ -9,8 +9,9 @@ var respuestasCheckbox1 = [];
 var respuestasCheckbox2 = [];
 var respuestasRadio1 = [];
 var respuestasRadio2 = [];
-var nota = 0; //nota de la prueba sobre 10 puntos (hay 10 preguntas)
-
+var nota = 0,0; //nota de la prueba sobre 10 puntos (hay 10 preguntas)
+var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
+var xslDoc = null;
 //**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos, entre otras acciones.
 
@@ -41,14 +42,26 @@ window.onload = function() {
     };
     xhttp.open("GET", "xml/questions.xml", true);
     xhttp.send();
+	
+	//LEER XSL de xml/questions.xml
+	var xhttp2 = new XMLHttpRequest();
+	xhttp2.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			xslDoc=this.responseXML;
+		}
+	};
+	xhttp2.open("GET", "xml/questions.xsl", true);
+	xhttp2.send();
+	
 }
 
 //****************************************************************************************************
 // Recuperamos los datos del fichero XML xml/preguntas.xml
 // xmlDOC es el documento leido XML.
 function gestionarXml(dadesXml) {
-    var xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
-    //TEXT1
+    xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
+    
+	//TEXT1
     //Recuperamos el título y la respuesta correcta de Input, guardamos el texto secreto
     var pregunta001 = xmlDoc.getElementsByTagName("title")[0].innerHTML;
     ponerDatosInputHtml1(pregunta001);
@@ -61,13 +74,13 @@ function gestionarXml(dadesXml) {
 
     //SELECT1
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
-    var opcionesSelect1 = [];
-    var nopt = xmlDoc.getElementById("profe003").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesSelect1[i] = xmlDoc.getElementById("profe003").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosSelectHtml1(pregunta003, opcionesSelect1);
-    respuestaSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    var xpath="/questions/question[@id='profe003']/option";
+	var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+	ponerDatosSelectHtml(pregunta003,nodesSelect);
+    
+	//Guardar respuestaSelect1 correcta
+	respuestaSelect1=parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
+    
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
