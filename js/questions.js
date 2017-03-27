@@ -72,25 +72,22 @@ function gestionarXml(dadesXml) {
     ponerDatosInputHtml2(pregunta002);
     textoSecreto2 = xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue;
 
-    //SELECT1
+        //SELECT1
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
     var xpath="/questions/question[@id='profe003']/option";
 	var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
 	ponerDatosSelectHtml1(pregunta003,nodesSelect1);
-    
-	//Guardar respuestaSelect1 correcta
+    //Guardar respuestaSelect1 correcta
 	respuestaSelect1=parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
     
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
-    var opcionesSelect2 = [];
-    var nopt = xmlDoc.getElementById("profe004").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesSelect2[i] = xmlDoc.getElementById("profe004").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosSelectHtml2(pregunta004, opcionesSelect2);
-    respuestaSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    var xpath="/questions/question[@id='profe004']/option";
+    var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+	ponerDatosSelectHtml2(pregunta004,nodesSelect2);
+	//Guardar respuestaSelect2 correcta
+	respuestaSelect2=parseInt(xmlDoc.getElementByTagName("answer")[3].innerHTML);
 
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
@@ -114,28 +111,24 @@ function gestionarXml(dadesXml) {
 
     //CHECKBOX1
     var pregunta007 = xmlDoc.getElementsByTagName("title")[6].innerHTML;
-    var opcionesCheckbox1 = [];
-    var nopt = xmlDoc.getElementById("profe007").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosCheckboxHtml1(pregunta007, opcionesCheckbox1);
+    var xpath="/questions/question[@id='profe007']/option";
+    var nodesCheckbox1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+    ponerDatosCheckboxHtml1(pregunta007,nodesCheckbox1);
+    //guardamos las respuestas correctas
     var nres = xmlDoc.getElementById("profe007").getElementsByTagName('answer').length;
-    for (i = 0; i < nres; i++) {
-        respuestasCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
+    for (i = 0; i < nres; i++) { 
+	respuestasCheckbox1[i]=xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
     }
 
     //CHECKBOX2
     var pregunta008 = xmlDoc.getElementsByTagName("title")[7].innerHTML;
-    var opcionesCheckbox2 = [];
-    var nopt = xmlDoc.getElementById("profe008").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosCheckboxHtml2(pregunta008, opcionesCheckbox2);
-    var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
-    for (i = 0; i < nres; i++) {
-        respuestasCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
+    var xpath="/questions/question[@id='profe008']/option";
+	var nodesCheckbox1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+	ponerDatosCheckboxHtml(pregunta008,nodesCheckbox2);
+	//guardamos las respuestas correctas
+	var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
+	for (i = 0; i < nres; i++) { 
+	respuestasCheckbox2[i]=xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
     }
 
     //RADIO1
