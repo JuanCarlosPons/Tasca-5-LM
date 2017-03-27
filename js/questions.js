@@ -86,7 +86,7 @@ function gestionarXml(dadesXml) {
     var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
     ponerDatosSelectHtml2(pregunta004, nodesSelect);
     //Guardar respuestaSelect2 correcta
-    respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[3].innerHTML);
+    respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
 
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
@@ -123,8 +123,8 @@ function gestionarXml(dadesXml) {
     //CHECKBOX2
     var pregunta008 = xmlDoc.getElementsByTagName("title")[7].innerHTML;
     var xpath = "/questions/question[@id='profe008']/option";
-    var nodesCheckbox1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosCheckboxHtml(pregunta008, nodesCheckbox2);
+    var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosCheckboxHtm2(pregunta008, nodesCheckbox);
     //guardamos las respuestas correctas
     var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
     for (i = 0; i < nres; i++) {
