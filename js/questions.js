@@ -75,8 +75,8 @@ function gestionarXml(dadesXml) {
     //SELECT1
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
     var xpath="/questions/question[@id='profe003']/option";
-	var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-	ponerDatosSelectHtml(pregunta003,nodesSelect);
+	var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+	ponerDatosSelectHtml1(pregunta003,nodesSelect1);
     
 	//Guardar respuestaSelect1 correcta
 	respuestaSelect1=parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
