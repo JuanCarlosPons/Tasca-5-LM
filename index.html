@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>
+        Exámen de Tecnología
+    </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Exámen de Tecnología | Universidad de Mahón">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' media='screen and (min-width: 961px)' href='css/d.css'>
+    <link rel='stylesheet' media='screen and (max-width: 960px)' href='css/m.css'>
+    <script type="text/javascript" src="js/questions.js"></script>
+</head>
+
+<body>
+    <div class="div-cabecera">
+        <div id="logo">
+            <img src="img/logo.png" alt="Logotipo universidad" />
+        </div>
+        <h1>
+			Universidad de Mahón
+		</h1>
+    </div>
+    <div class="div-examen">
+        <h2>
+			Examen
+		</h2>
+        <form id="myform">
+            <h4 id="pregunta001"></h4>
+            <input id="txt1" type="text" maxlength="3">
+            <br>
+            <br>
+            <h4 id="pregunta002"></h4>
+            <input id="txt2" type="text" maxlength="7">
+            <br>
+            <br>
+            <h4 id="pregunta003"></h4>
+            <select id="sel1">
+                <option selected value="-1">Selecciona la opción correcta...</option>
+            </select>
+            <br>
+            <br>
+            <h4 id="pregunta004"></h4>
+            <select id="sel2">
+                <option selected value="-1">Selecciona la opción correcta...</option>
+            </select>
+            <br>
+            <br>
+            <h4 id="pregunta005"></h4>
+            <select id="multiSel1" multiple></select>
+            <br>
+            <br>
+            <h4 id="pregunta006"></h4>
+            <select id="multiSel2" multiple></select>
+            <br>
+            <br>
+            <h4 id="pregunta007"></h4>
+            <div id="checkboxDiv1"></div>
+            <br>
+            <br>
+            <h4 id="pregunta008"></h4>
+            <div id="checkboxDiv2"></div>
+            <br>
+            <br>
+            <h4 id="pregunta009"></h4>
+            <div id="radioDiv1"></div>
+            <br>
+            <br>
+            <h4 id="pregunta010"></h4>
+            <div id="radioDiv2"></div>
+            <br>
+            <br>
+            <input type="submit" value="Corregir">
+        </form>
+        <div id='resultadosDiv'></div>
+    </div>
+</body>
+
+</html>

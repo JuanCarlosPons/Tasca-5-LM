@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, Verdana;
+    width: 96%;
+    padding-left: 2%;
+    padding-right: 2%
+}
+body,
+html {
+    height: 100%;
+    margin: 0px;
+}
+form {
+    padding: 2%;
+    background-color: #B4F4FC;
+}
+.div-cabecera {
+    height: auto;
+    background-color: white;
+    color: #1D646A;
+}
+#logo {
+    width: 10%;
+    min-width: 100px;
+    height: 10%;
+    display: inline-block;
+    float: right;
+    margin: auto;
+}
+#logo img {
+    width: 100%;
+    height: 100%;
+}
+#resultadosDiv {
+    text-align: center;
+    margin-bottom: 3%;
+    padding: 3%;
+}

@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, Verdana;
+}
+body,
+html {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+form {
+    padding: 0% 2% 0% 2%;
+    border-left: 1px solid #93A0A1;
+    border-right: 1px solid #93A0A1;
+}
+.div-cabecera {
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    color: #1D646A;
+    text-align: center;
+}
+.div-cabecera h1 {
+    padding-right: 10%;
+}
+.div-examen {
+    width: 70%;
+    padding: 2% 15% 0 15%;
+    background-color: #B4F4FC;
+}
+.div-examen h2 {
+    padding-bottom: 1%;
+    text-align: center;
+}
+#logo {
+    width: 10%;
+    min-width: 150px;
+    height: auto;
+    display: inline-block;
+    float: left;
+    margin: auto;
+}
+#logo img {
+    width: 100%;
+    height: 100%;
+    margin-left: 25%;
+}
+#resultadosDiv {
+    text-align: center;
+    margin-bottom: 3%;
+    padding: 3%;
+}
