@@ -10,7 +10,7 @@ var respuestasCheckbox2 = [];
 var respuestasRadio1 = [];
 var respuestasRadio2 = [];
 var nota = 0,0; //nota de la prueba sobre 10 puntos (hay 10 preguntas)
-var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
+//var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
 var xslDoc = null;
 //**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos, entre otras acciones.
