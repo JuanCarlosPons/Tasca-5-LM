@@ -9,7 +9,7 @@ var respuestasCheckbox1 = [];
 var respuestasCheckbox2 = [];
 var respuestasRadio1 = [];
 var respuestasRadio2 = [];
-var nota = 0,0; //nota de la prueba sobre 10 puntos (hay 10 preguntas)
+var nota = 0; //nota de la prueba sobre 10 puntos (hay 10 preguntas)
 //var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
 var xslDoc = null;
 //**************************************************************************************************** 
