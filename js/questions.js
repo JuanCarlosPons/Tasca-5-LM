@@ -71,14 +71,14 @@ function gestionarXml(dadesXml) {
     ponerDatosInputHtml2(pregunta002);
     textoSecreto2 = xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue;
 
-        //SELECT1
-    var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
-    var xpath="/questions/question[@id='profe003']/option";
-	var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-	ponerDatosSelectHtml1(pregunta003,nodesSelect1);
-    //Guardar respuestaSelect1 correcta
-	respuestaSelect1=parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
-    
+       //SELECT1
+ //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect) 
+ var pregunta003=xmlDoc.getElementsByTagName("title")[2].innerHTML;
+ var xpath="/questions/question[@id='profe003']/option";
+ var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+ ponerDatosSelectHtml1(pregunta003,nodesSelect1);
+ //guardamos la respuesta correcta
+ respuestaSelect1=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
@@ -243,15 +243,18 @@ function ponerDatosInputHtml2(t) {
     document.getElementById("pregunta002").innerHTML = t;
 }
 
-function ponerDatosSelectHtml1(t, opt) {
-    document.getElementById("pregunta003").innerHTML = t;
-    var select = document.getElementsByTagName("select")[0];
-    for (i = 0; i < opt.length; i++) {
-        var option = document.createElement("option");
-        option.text = opt[i];
-        option.value = i + 1;
-        select.options.add(option);
-    }
+function ponerDatosSelectHtml1(t,nodes){
+  document.getElementById("pregunta003").innerHTML=t;
+  var select = document.getElementsByTagName("select")[0];
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   result = nodes.iterateNext();
+  }  
 }
 
 function ponerDatosSelectHtml2(t, opt) {
