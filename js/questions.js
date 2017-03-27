@@ -257,15 +257,18 @@ function ponerDatosSelectHtml1(t,nodes){
   }  
 }
 
-function ponerDatosSelectHtml2(t, opt) {
-    document.getElementById("pregunta004").innerHTML = t;
-    var select = document.getElementsByTagName("select")[1];
-    for (i = 0; i < opt.length; i++) {
-        var option = document.createElement("option");
-        option.text = opt[i];
-        option.value = i + 1;
-        select.options.add(option);
-    }
+function ponerDatosSelectHtml2(t,nodes){
+  document.getElementById("pregunta004").innerHTML=t;
+  var select = document.getElementsByTagName("select")[1];
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   result = nodes.iterateNext();
+  }  
 }
 
 function ponerDatosMultiSelectHtml1(t, opt) {
