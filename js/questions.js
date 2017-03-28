@@ -75,16 +75,16 @@ function gestionarXml(dadesXml) {
     //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect) 
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
     var xpath = "/questions/question[@id='profe003']/option";
-    var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosSelectHtml1(pregunta003, nodesSelect);
+    var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosSelectHtml1(pregunta003, nodesSelect1);
     //guardamos la respuesta correcta
     respuestaSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
     var xpath = "/questions/question[@id='profe004']/option";
-    var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosSelectHtml2(pregunta004, nodesSelect);
+    var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosSelectHtml2(pregunta004, nodesSelect2);
     //Guardar respuestaSelect2 correcta
     respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
 
