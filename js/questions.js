@@ -94,7 +94,7 @@ function gestionarXml(dadesXml) {
     //guardamos las respuestas correctas
     var nres = xmlDoc.getElementById("profe006").getElementsByTagName('answer').length;
     for (i = 0; i < nres; i++) { 
-        respuestaMultiSelect2[i]=xmlDoc.getElementById("profe005").getElementsByTagName("answer")[i].innerHTML;
+        respuestaMultiSelect2[i]=xmlDoc.getElementById("profe006").getElementsByTagName("answer")[i].innerHTML;
     }
 
     //CHECKBOX1-XPATH
