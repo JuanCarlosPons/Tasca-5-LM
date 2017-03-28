@@ -81,7 +81,10 @@ function gestionarXml(dadesXml) {
     var nodesMultiSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
     ponerDatosMultiSelectHtml1(pregunta005,nodesMultiSelect1);
     //guardamos las respuestas correctas
-    respuestaMultiSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    var nres = xmlDoc.getElementById("profe005").getElementsByTagName('answer').length;
+    for (i = 0; i < nres; i++) { 
+        respuestaMultiSelect1[i]=xmlDoc.getElementById("profe005").getElementsByTagName("answer")[i].innerHTML;
+    }
 
     //MULTISELECT2
     var pregunta006 = xmlDoc.getElementsByTagName("title")[5].innerHTML;
@@ -258,17 +261,16 @@ function ponerDatosSelectHtml2(t,nodes){
 }
 
 function ponerDatosMultiSelectHtml1(t,nodes) {
-    document.getElementById("pregunta005").innerHTML = t;
-    var multiSelect1 = document.getElementsByTagName("select")[2];
-    var result = nodes.iterateNext();
-    i = 0; i < opt.length; i++;
-    while (result) {
-    var option = document.createElement("option");
-    option.text = result.innerHTML;
-    option.value=i+1; i++;
-    multiSelect1.options.add(option);
-    result = nodes.iterateNext();
-    }
+   document.getElementById("pregunta005").innerHTML = t;
+   var multiSelect1 = document.getElementsByTagName("select")[2];
+   var result = nodes.iterateNext();
+   i=0;
+   while (result) {
+       var input = document.createElement("input");
+       var label = document.createElement("label");   
+       label.innerHTML = result.innerHTML
+       result = nodes.iterateNext();
+      }    
 }
 
 function ponerDatosMultiSelectHtml2(t, opt) {
