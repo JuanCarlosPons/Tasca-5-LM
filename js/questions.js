@@ -61,24 +61,20 @@ function gestionarXml(dadesXml) {
 
     //SELECT1
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
-    var opcionesSelect1 = [];
-    var nopt = xmlDoc.getElementById("profe003").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesSelect1[i] = xmlDoc.getElementById("profe003").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosSelectHtml1(pregunta003, opcionesSelect1);
-    respuestaSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    var xpath="/questions/question[@id='profe003']/option";
+    var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosSelectHtml1(pregunta003,nodesSelect1);
+    //guardamos la respuesta correcta
+    respuestaSelect1=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
-    var opcionesSelect2 = [];
-    var nopt = xmlDoc.getElementById("profe004").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesSelect2[i] = xmlDoc.getElementById("profe004").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosSelectHtml2(pregunta004, opcionesSelect2);
-    respuestaSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
-
+    var xpath="/questions/question[@id='profe004']/option";
+    var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosSelectHtml2(pregunta004,nodesSelect2);
+    //guardamos la respuesta correcta
+    respuestaSelect2=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
     var opcionesMultiSelect1 = [];
@@ -238,26 +234,32 @@ function ponerDatosInputHtml2(t) {
     document.getElementById("pregunta002").innerHTML = t;
 }
 
-function ponerDatosSelectHtml1(t, opt) {
-    document.getElementById("pregunta003").innerHTML = t;
-    var select = document.getElementsByTagName("select")[0];
-    for (i = 0; i < opt.length; i++) {
-        var option = document.createElement("option");
-        option.text = opt[i];
-        option.value = i + 1;
-        select.options.add(option);
-    }
+function ponerDatosSelectHtml1(t,nodes){
+  document.getElementById("pregunta003").innerHTML=t;
+  var select = document.getElementsByTagName("select")[0];
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   result = nodes.iterateNext();
+  }  
 }
 
-function ponerDatosSelectHtml2(t, opt) {
-    document.getElementById("pregunta004").innerHTML = t;
-    var select = document.getElementsByTagName("select")[1];
-    for (i = 0; i < opt.length; i++) {
-        var option = document.createElement("option");
-        option.text = opt[i];
-        option.value = i + 1;
-        select.options.add(option);
-    }
+function ponerDatosSelectHtml2(t,nodes){
+  document.getElementById("pregunta004").innerHTML=t;
+  var select = document.getElementsByTagName("select")[1];
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   result = nodes.iterateNext();
+  }  
 }
 
 function ponerDatosMultiSelectHtml1(t, opt) {
