@@ -86,7 +86,7 @@ function gestionarXml(dadesXml) {
     var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
     ponerDatosSelectHtml2(pregunta004, nodesSelect2);
     //Guardar respuestaSelect2 correcta
-    respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[2].innerHTML);
+    respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[3].innerHTML);
 
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
