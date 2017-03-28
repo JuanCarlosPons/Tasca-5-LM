@@ -326,7 +326,22 @@ function ponerDatosCheckboxHtml2(t,nodes){
   }    
 }
 
-
+function ponerDatosRadioHtml1(t, opt) {
+    var radioContainer = document.getElementById('radioDiv1');
+    document.getElementById('pregunta009').innerHTML = t;
+    for (i = 0; i < opt.length; i++) {
+        var input = document.createElement("input");
+        var label = document.createElement("label");
+        label.innerHTML = opt[i];
+        label.setAttribute("for", "color_" + i);
+        input.type = "radio";
+        input.name = "color";
+        input.id = "color_" + i;;
+        radioContainer.appendChild(input);
+        radioContainer.appendChild(label);
+        radioContainer.appendChild(document.createElement("br"));
+    }
+}
 
 function ponerDatosRadioHtml2(t, opt) {
     var radioContainer = document.getElementById('radioDiv2');
