@@ -75,7 +75,7 @@ function gestionarXml(dadesXml) {
     //guardamos la respuesta correcta
     respuestaSelect2=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
     
-    //MULTISELECT1
+    //MULTISELECT1-XPATH
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
     var xpath="/questions/question[@id='profe005']/option";
     var nodesMultiSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
@@ -86,16 +86,16 @@ function gestionarXml(dadesXml) {
         respuestaMultiSelect1[i]=xmlDoc.getElementById("profe005").getElementsByTagName("answer")[i].innerHTML;
     }
 
-    //MULTISELECT2
+    //MULTISELECT2-XPATH
     var pregunta006 = xmlDoc.getElementsByTagName("title")[5].innerHTML;
-    var opcionesMultiSelect2 = [];
-    var nopt = xmlDoc.getElementById("profe006").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesMultiSelect2[i] = xmlDoc.getElementById("profe006").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosMultiSelectHtml2(pregunta006, opcionesMultiSelect2);
+    var xpath="/questions/question[@id='profe006']/option";
+    var nodesMultiSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosMultiSelectHtml2(pregunta006,nodesMultiSelect2);
     //guardamos las respuestas correctas
-    respuestaMultiSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    var nres = xmlDoc.getElementById("profe006").getElementsByTagName('answer').length;
+    for (i = 0; i < nres; i++) { 
+        respuestaMultiSelect2[i]=xmlDoc.getElementById("profe005").getElementsByTagName("answer")[i].innerHTML;
+    }
 
     //CHECKBOX1-XPATH
     var pregunta007 = xmlDoc.getElementsByTagName("title")[6].innerHTML;
@@ -274,15 +274,18 @@ function ponerDatosMultiSelectHtml1(t,nodes) {
     }  
 }
 
-function ponerDatosMultiSelectHtml2(t, opt) {
-    document.getElementById("pregunta006").innerHTML = t;
-    var multiSelect = document.getElementsByTagName("select")[3];
-    for (i = 0; i < opt.length; i++) {
-        var option = document.createElement("option");
-        option.text = opt[i];
-        option.value = i + 1;
-        multiSelect.options.add(option);
-    }
+function ponerDatosMultiSelectHtml2(t,nodes) {
+   document.getElementById("pregunta006").innerHTML = t;
+   var multiSelect2 = document.getElementsByTagName("select")[3];
+   var result = nodes.iterateNext();
+   i=0;
+   while (result) {
+    var option = document.createElement("option");
+    option.text = result.innerHTML;
+    option.value=i+1; i++;
+    multiSelect2.options.add(option);
+    result = nodes.iterateNext();
+    }  
 }
 
 function ponerDatosCheckboxHtml1(t,nodes){
