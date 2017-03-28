@@ -59,7 +59,7 @@ function gestionarXml(dadesXml) {
     ponerDatosInputHtml2(pregunta002);
     textoSecreto2 = xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue;
 
-    //SELECT1
+    //SELECT1-XPATH
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
     var xpath="/questions/question[@id='profe003']/option";
     var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
@@ -67,7 +67,7 @@ function gestionarXml(dadesXml) {
     //guardamos la respuesta correcta
     respuestaSelect1=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
-    //SELECT2
+    //SELECT2-XPATH
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
     var xpath="/questions/question[@id='profe004']/option";
     var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
@@ -95,30 +95,26 @@ function gestionarXml(dadesXml) {
     ponerDatosMultiSelectHtml2(pregunta006, opcionesMultiSelect2);
     respuestaMultiSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
-    //CHECKBOX1
+    //CHECKBOX1-XPATH
     var pregunta007 = xmlDoc.getElementsByTagName("title")[6].innerHTML;
-    var opcionesCheckbox1 = [];
-    var nopt = xmlDoc.getElementById("profe007").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosCheckboxHtml1(pregunta007, opcionesCheckbox1);
+    var xpath="/questions/question[@id='profe007']/option";
+    var nodesCheckbox1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+    ponerDatosCheckboxHtml1(pregunta007,nodesCheckbox1);
+    //guardamos las respuestas correctas
     var nres = xmlDoc.getElementById("profe007").getElementsByTagName('answer').length;
-    for (i = 0; i < nres; i++) {
-        respuestasCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
+    for (i = 0; i < nres; i++) { 
+        respuestasCheckbox1[i]=xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
     }
 
-    //CHECKBOX2
+    //CHECKBOX2-XPATH
     var pregunta008 = xmlDoc.getElementsByTagName("title")[7].innerHTML;
-    var opcionesCheckbox2 = [];
-    var nopt = xmlDoc.getElementById("profe008").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosCheckboxHtml2(pregunta008, opcionesCheckbox2);
+    var xpath="/questions/question[@id='profe008']/option";
+    var nodesCheckbox2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+    ponerDatosCheckboxHtml2(pregunta008,nodesCheckbox2);
+    //guardamos las respuestas correctas
     var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
-    for (i = 0; i < nres; i++) {
-        respuestasCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
+    for (i = 0; i < nres; i++) { 
+        respuestasCheckbox2[i]=xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
     }
 
     //RADIO1
@@ -284,38 +280,44 @@ function ponerDatosMultiSelectHtml2(t, opt) {
     }
 }
 
-function ponerDatosCheckboxHtml1(t, opt) {
-    var checkboxContainer = document.getElementById('checkboxDiv1');
-    document.getElementById('pregunta007').innerHTML = t;
-    for (i = 0; i < opt.length; i++) {
-        var input = document.createElement("input");
-        var label = document.createElement("label");
-        label.innerHTML = opt[i];
-        label.setAttribute("for", "color1_" + i);
-        input.type = "checkbox";
-        input.name = "color1";
-        input.id = "color1_" + i;;
-        checkboxContainer.appendChild(input);
-        checkboxContainer.appendChild(label);
-        checkboxContainer.appendChild(document.createElement("br"));
-    }
+function ponerDatosCheckboxHtml1(t,nodes){
+ var checkboxContainer=document.getElementById('checkboxDiv1');
+ document.getElementById('pregunta007').innerHTML = t;
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var input = document.createElement("input");
+   var label = document.createElement("label");   
+   label.innerHTML = result.innerHTML
+   label.setAttribute("for", "color_"+i);
+   input.type="checkbox";
+   input.name="color";
+   input.id="color_"+i; i++;
+   checkboxContainer.appendChild(input);
+   checkboxContainer.appendChild(label);
+   checkboxContainer.appendChild(document.createElement("br"));
+   result = nodes.iterateNext();
+  }    
 }
 
-function ponerDatosCheckboxHtml2(t, opt) {
-    var checkboxContainer = document.getElementById('checkboxDiv2');
-    document.getElementById('pregunta008').innerHTML = t;
-    for (i = 0; i < opt.length; i++) {
-        var input = document.createElement("input");
-        var label = document.createElement("label");
-        label.innerHTML = opt[i];
-        label.setAttribute("for", "color2_" + i);
-        input.type = "checkbox";
-        input.name = "color2";
-        input.id = "color2_" + i;;
-        checkboxContainer.appendChild(input);
-        checkboxContainer.appendChild(label);
-        checkboxContainer.appendChild(document.createElement("br"));
-    }
+function ponerDatosCheckboxHtml2(t,nodes){
+ var checkboxContainer=document.getElementById('checkboxDiv2');
+ document.getElementById('pregunta008').innerHTML = t;
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var input = document.createElement("input");
+   var label = document.createElement("label");   
+   label.innerHTML = result.innerHTML
+   label.setAttribute("for", "color_"+i);
+   input.type="checkbox";
+   input.name="color";
+   input.id="color_"+i; i++;
+   checkboxContainer.appendChild(input);
+   checkboxContainer.appendChild(label);
+   checkboxContainer.appendChild(document.createElement("br"));
+   result = nodes.iterateNext();
+  }    
 }
 
 function ponerDatosRadioHtml1(t, opt) {
