@@ -335,10 +335,10 @@ function ponerDatosRadioHtml1(t,nodes){
         var input = document.createElement("input");
         var label = document.createElement("label");
         label.innerHTML = result[i];
-        label.setAttribute("for", "color_" + i);
+        label.setAttribute("for", "color1_" + i);
         input.type = "radio";
-        input.name = "color";
-        input.id = "color_" + i;;
+        input.name = "color1";
+        input.id = "color1_" + i;;
         radioContainer.appendChild(input);
         radioContainer.appendChild(label);
         radioContainer.appendChild(document.createElement("br"));
@@ -352,10 +352,10 @@ function ponerDatosRadioHtml2(t, opt) {
         var input = document.createElement("input");
         var label = document.createElement("label");
         label.innerHTML = opt[i];
-        label.setAttribute("for", "color_" + i);
+        label.setAttribute("for", "color2_" + i);
         input.type = "radio";
-        input.name = "color";
-        input.id = "color_" + i;;
+        input.name = "color2";
+        input.id = "color2_" + i;;
         radioContainer.appendChild(input);
         radioContainer.appendChild(label);
         radioContainer.appendChild(document.createElement("br"));
