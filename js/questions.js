@@ -3,15 +3,14 @@ var textoSecreto1 = null;
 var textoSecreto2 = null;
 var respuestaSelect1 = null;
 var respuestaSelect2 = null;
-var respuestaMultiSelect1 = [];
-var respuestaMultiSelect2 = [];
-var respuestasCheckbox1 = [];
-var respuestasCheckbox2 = [];
-var respuestasRadio1 = [];
-var respuestasRadio2 = [];
+var respuestaMultiSelect1 = []
+var respuestaMultiSelect2 = []
+var respuestasCheckbox1 = []
+var respuestasCheckbox2 = []
+var respuestasRadio1 = []
+var respuestasRadio2 = []
 var nota = 0; //nota de la prueba sobre 10 puntos (hay 10 preguntas)
-var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
-var xslDoc = null;
+
 //**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos, entre otras acciones.
 
@@ -42,24 +41,13 @@ window.onload = function() {
     };
     xhttp.open("GET", "xml/questions.xml", true);
     xhttp.send();
-
-    //LEER XSL de xml/questions.xml
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            xslDoc = this.responseXML;
-        }
-    };
-    xhttp2.open("GET", "xml/questions.xsl", true);
-    xhttp2.send();
-
 }
+
 //****************************************************************************************************
 // Recuperamos los datos del fichero XML xml/preguntas.xml
 // xmlDOC es el documento leido XML.
 function gestionarXml(dadesXml) {
-    xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
-
+    var xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
     //TEXT1
     //Recuperamos el título y la respuesta correcta de Input, guardamos el texto secreto
     var pregunta001 = xmlDoc.getElementsByTagName("title")[0].innerHTML;
@@ -72,22 +60,21 @@ function gestionarXml(dadesXml) {
     textoSecreto2 = xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue;
 
     //SELECT1
-    //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect) 
     var pregunta003 = xmlDoc.getElementsByTagName("title")[2].innerHTML;
-    var xpath = "/questions/question[@id='profe003']/option";
+    var xpath="/questions/question[@id='profe003']/option";
     var nodesSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosSelectHtml1(pregunta003, nodesSelect1);
+    ponerDatosSelectHtml1(pregunta003,nodesSelect1);
     //guardamos la respuesta correcta
-    respuestaSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    respuestaSelect1=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //SELECT2
     var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
-    var xpath = "/questions/question[@id='profe004']/option";
+    var xpath="/questions/question[@id='profe004']/option";
     var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosSelectHtml2(pregunta004, nodesSelect2);
-    //Guardar respuestaSelect2 correcta
-    respuestaSelect2 = parseInt(xmlDoc.getElementByTagName("answer")[3].innerHTML);
-
+    ponerDatosSelectHtml2(pregunta004,nodesSelect2);
+    //guardamos la respuesta correcta
+    respuestaSelect2=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
     var opcionesMultiSelect1 = [];
@@ -108,13 +95,14 @@ function gestionarXml(dadesXml) {
     ponerDatosMultiSelectHtml2(pregunta006, opcionesMultiSelect2);
     respuestaMultiSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
-    //CHECKBOX
-    //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect)
+    //CHECKBOX1
     var pregunta007 = xmlDoc.getElementsByTagName("title")[6].innerHTML;
-    var xpath = "/questions/question[@id='profe007']/option";
-    var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosCheckboxHtml1(pregunta007, nodesCheckbox);
-    //guardamos las respuestas correctas
+    var opcionesCheckbox1 = [];
+    var nopt = xmlDoc.getElementById("profe007").getElementsByTagName('option').length;
+    for (i = 0; i < nopt; i++) {
+        opcionesCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName('option')[i].innerHTML;
+    }
+    ponerDatosCheckboxHtml1(pregunta007, opcionesCheckbox1);
     var nres = xmlDoc.getElementById("profe007").getElementsByTagName('answer').length;
     for (i = 0; i < nres; i++) {
         respuestasCheckbox1[i] = xmlDoc.getElementById("profe007").getElementsByTagName("answer")[i].innerHTML;
@@ -122,10 +110,12 @@ function gestionarXml(dadesXml) {
 
     //CHECKBOX2
     var pregunta008 = xmlDoc.getElementsByTagName("title")[7].innerHTML;
-    var xpath = "/questions/question[@id='profe008']/option";
-    var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-    ponerDatosCheckboxHtm2(pregunta008, nodesCheckbox);
-    //guardamos las respuestas correctas
+    var opcionesCheckbox2 = [];
+    var nopt = xmlDoc.getElementById("profe008").getElementsByTagName('option').length;
+    for (i = 0; i < nopt; i++) {
+        opcionesCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName('option')[i].innerHTML;
+    }
+    ponerDatosCheckboxHtml2(pregunta008, opcionesCheckbox2);
     var nres = xmlDoc.getElementById("profe008").getElementsByTagName('answer').length;
     for (i = 0; i < nres; i++) {
         respuestasCheckbox2[i] = xmlDoc.getElementById("profe008").getElementsByTagName("answer")[i].innerHTML;
@@ -244,34 +234,32 @@ function ponerDatosInputHtml2(t) {
     document.getElementById("pregunta002").innerHTML = t;
 }
 
-function ponerDatosSelectHtml1(t, nodes) {
-    document.getElementById("pregunta003").innerHTML = t;
-    var select = document.getElementsByTagName("select")[0];
-    var result = nodes.iterateNext();
-    i = 0;
-    while (result) {
-        var option = document.createElement("option");
-        option.text = result.innerHTML;
-        option.value = i + 1;
-        i++;
-        select.options.add(option);
-        result = nodes.iterateNext();
-    }
+function ponerDatosSelectHtml1(t,nodes){
+  document.getElementById("pregunta003").innerHTML=t;
+  var select = document.getElementsByTagName("select")[0];
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   result = nodes.iterateNext();
+  }  
 }
 
-function ponerDatosSelectHtml2(t, nodes) {
-    document.getElementById("pregunta004").innerHTML = t;
-    var select2 = document.getElementsByTagName("select")[1];
-    var result2 = nodes.iterateNext();
-    i = 0;
-    while (result2) {
-        var option = document.createElement("option");
-        option.text = result2.innerHTML;
-        option.value = i + 1;
-        i++;
-        select2.options.add(option);
-        result2 = nodes.iterateNext();
-    }
+function ponerDatosSelectHtml2(t,nodes){
+  document.getElementById("pregunta004").innerHTML=t;
+  var select = document.getElementsByTagName("select")[1];
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   result = nodes.iterateNext();
+  }  
 }
 
 function ponerDatosMultiSelectHtml1(t, opt) {
@@ -296,24 +284,20 @@ function ponerDatosMultiSelectHtml2(t, opt) {
     }
 }
 
-function ponerDatosCheckboxHtml1(t, nodes) {
+function ponerDatosCheckboxHtml1(t, opt) {
     var checkboxContainer = document.getElementById('checkboxDiv1');
     document.getElementById('pregunta007').innerHTML = t;
-    var result = nodes.iterateNext();
-    i = 0;
-    while (result) {
+    for (i = 0; i < opt.length; i++) {
         var input = document.createElement("input");
         var label = document.createElement("label");
-        label.innerHTML = result.innerHTML
-        label.setAttribute("for", "color_" + i);
+        label.innerHTML = opt[i];
+        label.setAttribute("for", "color1_" + i);
         input.type = "checkbox";
-        input.name = "color";
-        input.id = "color_" + i;
-        i++;
+        input.name = "color1";
+        input.id = "color1_" + i;;
         checkboxContainer.appendChild(input);
         checkboxContainer.appendChild(label);
         checkboxContainer.appendChild(document.createElement("br"));
-        result = nodes.iterateNext();
     }
 }
 
