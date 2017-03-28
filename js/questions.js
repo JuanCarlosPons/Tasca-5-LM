@@ -266,18 +266,13 @@ function ponerDatosMultiSelectHtml1(t,nodes) {
    var result = nodes.iterateNext();
    i=0;
    while (result) {
-   var option = document.createElement("option");
-   option.text = result.innerHTML;
-   option.value=i+1; i++;
-   multiSelect1.options.add(option);
-   result = nodes.iterateNext();
-  }  
+    var option = document.createElement("option");
+    option.text = result.innerHTML;
+    option.value=i+1; i++;
+    multiSelect1.options.add(option);
+    result = nodes.iterateNext();
+    }  
 }
-
-    //var nres = xmlDoc.getElementById("profe005").getElementsByTagName('answer').length;
-    //for (i = 0; i < nres; i++) { 
-      //  respuestaMultiSelect1[i]=xmlDoc.getElementById("profe005").getElementsByTagName("answer")[i].innerHTML;
-    //}
 
 function ponerDatosMultiSelectHtml2(t, opt) {
     document.getElementById("pregunta006").innerHTML = t;
