@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/xsl" href="questions.xsl"?>
+
+<questions>
+	<question id='profe001'>
+		<type>text</type>
+		<title>1 - Unidad de información más pequeña en un ordenador:</title>
+		<answer>bit</answer>
+	</question>
+	<question id='profe002'>
+		<type>text</type>
+		<title>2 - Unidad de intensidad de corriente:</title>
+		<answer>amperio</answer>
+	</question>
+	<question id='profe003'>
+		<type>select</type>
+		<title>3 - Tipo de corriente que circula por un circuito alimentado por una batería:</title>
+		<option>Corriente alterna</option>
+		<option>Corriente Tesla</option> 
+		<option>Corriente continua</option>
+		<answer>2</answer>
+	</question>
+	<question id='profe004'>
+		<type>select</type>
+		<title>4 - 1024 bytes equivalen a:</title>
+		<option>1024 megabytes</option>
+		<option>1024 kylobytes</option>
+		<option>1 kilobyte</option> 
+		<option>1 megabyte</option>
+		<answer>2</answer>
+	</question>
+	<question id='profe005'>
+		<type>multiple</type>
+		<title>5 - Las direcciones IPv4 están compuestas de: (selecciona todas las correctas)</title>
+		<option>64 bits</option>
+		<option>32 bits</option>
+		<option>128 bits</option>
+		<option>4 bytes</option> 
+		<option>8 bytes</option>
+		<option>16 bytes</option>
+		<answer>1</answer>
+		<answer>3</answer>
+	</question>
+	<question id='profe006'>
+		<type>multiple</type>
+		<title>6 - Selecciona todas las extensiones que correspondan a archivos de imagen</title>
+		<option>WMA</option>
+		<option>SVG</option>
+		<option>PNG</option>
+		<option>BMP</option> 
+		<option>AVI</option>
+		<option>BAT</option>
+		<option>JPG</option>
+		<option>RAR</option>
+		<answer>1</answer>
+		<answer>2</answer>
+		<answer>3</answer>
+		<answer>6</answer>
+	</question>
+	<question id='profe007'>
+		<type>checkbox</type>
+		<title>7 - Las direcciones MAC se expresan en:</title>
+		<option>Decimal</option>
+		<option>Binario</option>
+		<option>Hexadecimal</option>
+		<answer>2</answer>
+	</question>
+	<question id='profe008'>
+		<type>checkbox</type>
+		<title>8 - Qué significa DTD?</title>
+		<option>Document Type Definition</option>
+		<option>Direct Type Definition</option>
+		<option>Dynamic Type Definition</option>
+		<answer>0</answer>
+	</question>
+	<question id='profe009'>
+		<type>radio</type>
+		<title>9 - Cuando decimos "hardware" nos referimos a:</title>
+		<option>Programas y aplicaciones</option>
+		<option>Componentes físicos</option>
+		<option>Disco duro</option>
+		<answer>1</answer>
+	</question>
+	<question id='profe010'>
+		<type>radio</type>
+		<title>10 - ¿Cuál no es un lenguaje de programación?</title>
+		<option>HTTP</option>
+		<option>JavaScript</option>
+		<option>HTML</option>
+		<option>CSS</option>
+		<answer>0</answer>
+	</question>
+</questions>
