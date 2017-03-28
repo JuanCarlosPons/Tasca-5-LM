@@ -182,8 +182,8 @@ function corregirCheckbox1() {
     //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
     var f = formElement;
     var escorrecta = [];
-    for (i = 0; i < f.color1.length; i++) {
-        if (f.color1[i].checked) {
+    for (i = 0; i < f.color.length; i++) {
+        if (f.color[i].checked) {
             escorrecta[i] = false;
             for (j = 0; j < respuestasCheckbox1.length; j++) {
                 if (i == respuestasCheckbox1[j]) escorrecta[i] = true;
@@ -203,8 +203,8 @@ function corregirCheckbox2() {
     //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
     var f = formElement;
     var escorrecta = [];
-    for (i = 0; i < f.color2.length; i++) {
-        if (f.color2[i].checked) {
+    for (i = 0; i < f.color.length; i++) {
+        if (f.color[i].checked) {
             escorrecta[i] = false;
             for (j = 0; j < respuestasCheckbox2.length; j++) {
                 if (i == respuestasCheckbox2[j]) escorrecta[i] = true;
