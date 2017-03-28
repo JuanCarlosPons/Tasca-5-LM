@@ -182,8 +182,8 @@ function corregirCheckbox1() {
     //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
     var f = formElement;
     var escorrecta = [];
-    for (i = 0; i < f.color.length; i++) {
-        if (f.color[i].checked) {
+    for (i = 0; i < f.color1.length; i++) {
+        if (f.color1[i].checked) {
             escorrecta[i] = false;
             for (j = 0; j < respuestasCheckbox1.length; j++) {
                 if (i == respuestasCheckbox1[j]) escorrecta[i] = true;
@@ -203,8 +203,8 @@ function corregirCheckbox2() {
     //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
     var f = formElement;
     var escorrecta = [];
-    for (i = 0; i < f.color.length; i++) {
-        if (f.color[i].checked) {
+    for (i = 0; i < f.color2.length; i++) {
+        if (f.color2[i].checked) {
             escorrecta[i] = false;
             for (j = 0; j < respuestasCheckbox2.length; j++) {
                 if (i == respuestasCheckbox2[j]) escorrecta[i] = true;
@@ -289,10 +289,10 @@ function ponerDatosCheckboxHtml1(t,nodes){
    var input = document.createElement("input");
    var label = document.createElement("label");   
    label.innerHTML = result.innerHTML
-   label.setAttribute("for", "color_"+i);
+   label.setAttribute("for", "color1_"+i);
    input.type="checkbox";
-   input.name="color";
-   input.id="color_"+i; i++;
+   input.name="color1";
+   input.id="color1_"+i; i++;
    checkboxContainer.appendChild(input);
    checkboxContainer.appendChild(label);
    checkboxContainer.appendChild(document.createElement("br"));
@@ -309,10 +309,10 @@ function ponerDatosCheckboxHtml2(t,nodes){
    var input = document.createElement("input");
    var label = document.createElement("label");   
    label.innerHTML = result.innerHTML
-   label.setAttribute("for", "color_"+i);
+   label.setAttribute("for", "color2_"+i);
    input.type="checkbox";
-   input.name="color";
-   input.id="color_"+i; i++;
+   input.name="color2";
+   input.id="color2_"+i; i++;
    checkboxContainer.appendChild(input);
    checkboxContainer.appendChild(label);
    checkboxContainer.appendChild(document.createElement("br"));
@@ -376,8 +376,12 @@ function inicializar() {
 function comprobar() {
     var f = formElement;
     var checked = false;
-    for (i = 0; i < f.color.length; i++) {
-        if (f.color[i].checked) checked = true;
+    var checked2 = false;
+    for (i = 0; i < f.color1.length; i++) {
+        if (f.color1[i].checked) checked = true;
+    }
+    for (i = 0; i < f.color2.length; i++) {
+        if (f.color2[i].checked) checked2 = true;
     }
     if (f.elements[0].value == "") {
         f.elements[0].focus();
@@ -399,7 +403,7 @@ function comprobar() {
         document.getElementsByTagName("h4")[6].scrollIntoView();
         alert("Selecciona una respuesta de la pregunta 7");
         return false;
-    } if (!checked) {
+    } if (!checked2) {
         document.getElementsByTagName("h4")[7].scrollIntoView();
         alert("Selecciona una respuesta de la pregunta 8");
         return false;
