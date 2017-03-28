@@ -70,12 +70,14 @@ function gestionarXml(dadesXml) {
     respuestaSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //SELECT2
-    var pregunta004=xmlDoc.getElementsByTagName("title")[3].innerHTML;
-	var xpath="/questions/question[@id='profe004']/option";
-	var nodesSelect2 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
-	ponerDatosSelectHtml(pregunta004,nodesSelect2);
-	//guardamos la respuesta correcta
-	respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
+    var pregunta004 = xmlDoc.getElementsByTagName("title")[3].innerHTML;
+    var opcionesSelect2 = [];
+    var nopt = xmlDoc.getElementById("profe004").getElementsByTagName('option').length;
+    for (i = 0; i < nopt; i++) {
+        opcionesSelect2[i] = xmlDoc.getElementById("profe004").getElementsByTagName('option')[i].innerHTML;
+    }
+    ponerDatosSelectHtml2(pregunta004, opcionesSelect2);
+    respuestaSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
