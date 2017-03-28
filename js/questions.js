@@ -121,12 +121,10 @@ function gestionarXml(dadesXml) {
 
     //RADIO1
     var pregunta009 = xmlDoc.getElementsByTagName("title")[8].innerHTML;
-    var opcionesRadio1 = [];
-    var nopt = xmlDoc.getElementById("profe009").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesRadio1[i] = xmlDoc.getElementById("profe009").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosRadioHtml1(pregunta009, opcionesRadio1);
+    var xpath="/questions/question[@id='profe009']/option";
+    var nodesRadio1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+    ponerDatosRadioHtml1(pregunta009,nodesRadio1);
+    //guardamos las respuestas correctas
     var nres = xmlDoc.getElementById("profe009").getElementsByTagName('answer').length;
     for (i = 0; i < nres; i++) {
         respuestasRadio1[i] = xmlDoc.getElementById("profe009").getElementsByTagName("answer")[i].innerHTML;
@@ -328,13 +326,15 @@ function ponerDatosCheckboxHtml2(t,nodes){
   }    
 }
 
-function ponerDatosRadioHtml1(t, opt) {
-    var radioContainer = document.getElementById('radioDiv1');
-    document.getElementById('pregunta009').innerHTML = t;
-    for (i = 0; i < opt.length; i++) {
+function ponerDatosRadioHtml1(t,nodes){
+ var radioContainer=document.getElementById('radioDiv1');
+ document.getElementById('pregunta009').innerHTML = t;
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
         var input = document.createElement("input");
         var label = document.createElement("label");
-        label.innerHTML = opt[i];
+        label.innerHTML = result[i];
         label.setAttribute("for", "color_" + i);
         input.type = "radio";
         input.name = "color";
