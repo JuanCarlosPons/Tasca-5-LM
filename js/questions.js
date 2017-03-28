@@ -77,12 +77,10 @@ function gestionarXml(dadesXml) {
     
     //MULTISELECT1
     var pregunta005 = xmlDoc.getElementsByTagName("title")[4].innerHTML;
-    var opcionesMultiSelect1 = [];
-    var nopt = xmlDoc.getElementById("profe005").getElementsByTagName('option').length;
-    for (i = 0; i < nopt; i++) {
-        opcionesMultiSelect1[i] = xmlDoc.getElementById("profe005").getElementsByTagName('option')[i].innerHTML;
-    }
-    ponerDatosMultiSelectHtml1(pregunta005, opcionesMultiSelect1);
+    var xpath="/questions/question[@id='profe005']/option";
+    var nodesMultiSelect1 = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+    ponerDatosMultiSelectHtml1(pregunta005,nodesMultiSelect1);
+    //guardamos las respuestas correctas
     respuestaMultiSelect1 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //MULTISELECT2
@@ -93,6 +91,7 @@ function gestionarXml(dadesXml) {
         opcionesMultiSelect2[i] = xmlDoc.getElementById("profe006").getElementsByTagName('option')[i].innerHTML;
     }
     ponerDatosMultiSelectHtml2(pregunta006, opcionesMultiSelect2);
+    //guardamos las respuestas correctas
     respuestaMultiSelect2 = parseInt(xmlDoc.getElementsByTagName("answer")[2].innerHTML);
 
     //CHECKBOX1-XPATH
@@ -258,14 +257,17 @@ function ponerDatosSelectHtml2(t,nodes){
   }  
 }
 
-function ponerDatosMultiSelectHtml1(t, opt) {
+function ponerDatosMultiSelectHtml1(t,nodes) {
     document.getElementById("pregunta005").innerHTML = t;
-    var multiSelect = document.getElementsByTagName("select")[2];
-    for (i = 0; i < opt.length; i++) {
-        var option = document.createElement("option");
-        option.text = opt[i];
-        option.value = i + 1;
-        multiSelect.options.add(option);
+    var multiSelect1 = document.getElementsByTagName("select")[2];
+    var result = nodes.iterateNext();
+    i = 0; i < opt.length; i++;
+    while (result) {
+    var option = document.createElement("option");
+    option.text = result.innerHTML;
+    option.value=i+1; i++;
+    multiSelect1.options.add(option);
+    result = nodes.iterateNext();
     }
 }
 
