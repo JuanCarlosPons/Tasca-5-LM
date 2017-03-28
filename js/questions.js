@@ -376,11 +376,8 @@ function inicializar() {
 function comprobar() {
     var f = formElement;
     var checked = false;
-    for (i = 0; i < f.color1.length; i++) {
-        if (f.color1[i].checked) checked = true;
-    }
-    for (i = 0; i < f.color2.length; i++) {
-        if (f.color2[i].checked) checked = true;
+    for (i = 0; i < f.color.length; i++) {
+        if (f.color[i].checked) checked = true;
     }
     if (f.elements[0].value == "") {
         f.elements[0].focus();
@@ -398,15 +395,13 @@ function comprobar() {
         f.elements[3].focus();
         alert("Responde todas las preguntas antes de corregir");
         return false;
-    }
-    if (!checked) {
-        document.getElementsByTagName("h4")[6].focus();
-        alert("Responde todas las preguntas antes de corregir");
+    } if (!checked) {
+        document.getElementsByTagName("h4")[6].scrollIntoView();
+        alert("Selecciona una respuesta de la pregunta 7");
         return false;
-    }
-    if (!checked) {
-        document.getElementsByTagName("h4")[7].focus();
-        alert("Responde todas las preguntas antes de corregir");
+    } if (!checked) {
+        document.getElementsByTagName("h4")[7].scrollIntoView();
+        alert("Selecciona una respuesta de la pregunta 8");
         return false;
     } else return true;
 }
