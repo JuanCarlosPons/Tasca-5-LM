@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?xml-stylesheet type="text/xsl" href="questions.xsl"?>
-
-<questions>
+<questions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="preguntas.xsd">
 	<question id='profe001'>
 		<type>text</type>
-		<title>1 - Unidad de información más pequeña en un ordenador:</title>
+		<title>1 - Unidad de información más pequeña en un ordenador</title>
 		<answer>bit</answer>
 	</question>
 	<question id='profe002'>
 		<type>text</type>
-		<title>2 - Unidad de intensidad de corriente:</title>
+		<title>2 - Unidad de intensidad de corriente</title>
 		<answer>amperio</answer>
 	</question>
 	<question id='profe003'>
 		<type>select</type>
-		<title>3 - Tipo de corriente que circula por un circuito alimentado por una batería:</title>
+		<title>3 - Tipo de corriente que circula por un circuito alimentado por una batería</title>
 		<option>Corriente alterna</option>
 		<option>Corriente Tesla</option> 
 		<option>Corriente continua</option>
