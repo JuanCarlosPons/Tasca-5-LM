@@ -1,8 +1,8 @@
 body {
     font-family: Arial, Verdana;
 }
-body,
-html {
+body,html {
+    background-color: cyan;
     height: 100%;
     padding: 0px;
     margin: 0px;
@@ -45,6 +45,8 @@ form {
     margin-left: 25%;
 }
 #resultadosDiv {
+    background-color: cyan;
+    border: 2px solid red;
     text-align: center;
     margin-bottom: 3%;
     padding: 3%;
