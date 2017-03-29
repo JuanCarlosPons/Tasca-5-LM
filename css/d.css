@@ -74,5 +74,6 @@ form {
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+.botoncorr:hover {
     background-color: #1A57D1;
+}
