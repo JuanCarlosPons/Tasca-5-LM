@@ -20,7 +20,8 @@ form {
     font-family: Impact;
 }
 .div-cabecera h1 {
-    padding: 8% 10% 0% 0%;
+    padding-top: 2%;
+    text-align: center;
 }
 .div-examen {
     width: 70%;
