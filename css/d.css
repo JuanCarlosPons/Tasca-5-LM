@@ -52,13 +52,14 @@ form {
 }
 .botoncorr {
     background-color: #3D79F2;
-    border: 2px solid white;
+    border: 4px solid white;
+    border-radius: 15px;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    margin-left: 50%;
+    margin-left: 35%;
     cursor: pointer;
 }
