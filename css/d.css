@@ -51,6 +51,7 @@ form {
     padding: 3%;
 }
 .botoncorr {
+    width: 30%;
     background-color: #3D79F2;
     border: none;
     border-radius: 15px;
@@ -58,7 +59,8 @@ form {
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    float: center;
+    display:inline-block;
+    margin-left: 35%;
     font-size: 18px;
     cursor: pointer;
 }
