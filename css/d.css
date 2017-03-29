@@ -29,6 +29,8 @@ form {
 .div-examen h2 {
     padding-bottom: 1%;
     text-align: center;
+    background-color: #FBE969;
+    color: #3D79F2;
 }
 #logo {
     width: 10%;
@@ -60,7 +62,7 @@ form {
     text-align: center;
     text-decoration: none;
     display:inline-block;
-    margin: 5% 0% 10% 35%;
+    margin: 5% 0% 5% 35%;
     font-size: 18px;
     cursor: pointer;
 }
