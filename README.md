@@ -16,7 +16,7 @@
     - inputTypeText: **Ok**
     - select: **Ok**
     - selectMultiple: **No conseguido**
-    - checkbox: **Ok** (¡he logrado forzar la comprobación de las dos *checkbox* independientemente!)
+    - checkbox: **¡Ok!** 
     - radio: **No conseguido** 
     
 4. Mostrar tabla de resultados XSLT al corregir mediante JavaScript 
