@@ -25,6 +25,7 @@
 5. Mejorar presentación
     - Mejorar la presentación general del examen: **Ok**
     
-6. Código
-    - Indent en rama **Master**: **Ok**
-    - Minify en rama secundaria llamada _Minified_: **No carga...** Lo he repasado y no me funciona, pero es un mal menor y no tengo más tiempo :(
+6. Extra
+    - Responsive: **OK**
+    - Código _Indent_ en rama _Master_: **Ok**
+    - Código _Minify_ en rama secundaria llamada _Minified_: **No carga...** Lo he repasado y no me funciona, pero es un mal menor y no tengo más tiempo, lo siento :(
