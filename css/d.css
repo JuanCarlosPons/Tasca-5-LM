@@ -53,11 +53,10 @@ form {
     margin-left: 25%;
 }
 #resultadosDiv {
-    background-color: cyan;
-    border: 2px solid red;
-    text-align: center;
-    margin-bottom: 3%;
-    padding: 3%;
+	background-color: cyan;
+	padding: 2%;
+	margin-top: 2%;
+	text-align: center;
 }
 .botoncorr {
     width: 30%;
