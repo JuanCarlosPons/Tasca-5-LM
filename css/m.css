@@ -50,6 +50,8 @@ form {
 }
 #resultadosDiv {
 	background-color: cyan;
+	padding: 2%;
+	text-align: center;
 }
 .botoncorr {
     width: 30%;
