@@ -33,7 +33,7 @@ input[type=text] {
     width: 50%;
     height: auto;
     padding: 10px 12px;
-    margin: 8px 0;
+    margin: auto 0;
     display: block;
     border: 2px solid grey;
     border-radius: 10px;
