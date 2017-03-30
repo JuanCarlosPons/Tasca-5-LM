@@ -15,8 +15,26 @@ form {
 }
 .div-cabecera {
     height: auto;
+	width: 100%;
+	display: inline-block;
     background-color: white;
     color: #1D646A;
+	background-color: #dddddd;
+	font-family: Impact;
+}
+.div-cabecera h1 {
+    padding-left: 3%;
+	color: black;
+}
+.div-examen h2 {
+    padding: 3% 0%;
+    text-align: center;
+    background-color: #FBE969;
+    color: #1D646A;
+    border-radius: 5px;
+    margin-bottom: 3%;
+    font-weight: bolt;
+    font-family: Georgia;
 }
 #logo {
     width: 10%;
@@ -35,6 +53,7 @@ form {
     margin-bottom: 3%;
     padding: 3%;
 }
+
 .botoncorr {
     width: 30%;
     background-color: #1A57D1;
