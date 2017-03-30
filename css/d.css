@@ -36,7 +36,7 @@ input[type=text] {
     margin: auto 0;
     display: block;
     border: 2px solid grey;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .div-cabecera {
     width: 100%;
