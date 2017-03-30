@@ -417,4 +417,3 @@ function comprobar() {
         return false;
     } else return true;
 }
-$('select').getElementById(multiSel1);
