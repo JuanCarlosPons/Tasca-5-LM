@@ -27,4 +27,4 @@
     
 6. Código
     - Indent en rama **Master**: **Ok**
-    - Minify en rama secundaria llamada _Minify_: **Ok**
+    - Minify en rama secundaria llamada _Minified_: **No carga...** Lo he repasado y no me funciona, pero es un mal menor y no tengo más tiempo :(
