@@ -11,7 +11,7 @@ form {
     border-left: 1px solid #93A0A1;
     border-right: 1px solid #93A0A1;
 }
-input[type=text], select, select multiple {
+input[type=text], select{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -19,6 +19,15 @@ input[type=text], select, select multiple {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+select multiple {
+    width: 100%;
+    height: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
 }
 .div-cabecera {
     width: 100%;
