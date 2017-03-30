@@ -41,16 +41,16 @@ input[type=text] {
 }
 .div-cabecera {
     height: auto;
-	width: 100%;
-	display: inline-block;
+    width: 100%;
+    display: inline-block;
     background-color: white;
     color: #1D646A;
-	background-color: #dddddd;
-	font-family: Impact;
+    background-color: #dddddd;
+    font-family: Impact;
 }
 .div-cabecera h1 {
     padding-left: 3%;
-	color: black;
+    color: black;
 }
 .div-examen h2 {
     padding: 3% 0%;
@@ -75,6 +75,7 @@ input[type=text] {
     height: 100%;
 }
 #resultadosDiv {
+	box-sizing: border-box;
 	background-color: cyan;
 	padding: 2%;
 	margin-top: 2%;
