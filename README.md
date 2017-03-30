@@ -23,4 +23,8 @@
     - **No conseguido** y lamentablemente no he podido aprender cómo hacerlo. Lo veo muy difícil, hecho que me preocupa.
     
 5. Mejorar presentación
-    - 
+    - Mejorar la presentación general del examen: **Ok**
+    
+6. Código
+    - Indent en rama **Master**: **Ok**
+    - Minify en rama secundaria llamada _Minify_: **Ok**
