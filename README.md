@@ -16,7 +16,7 @@
     - inputTypeText: **Ok**
     - select: **Ok**
     - selectMultiple: **No conseguido**
-    - checkbox: **¡Ok!** 
+    - checkbox: **¡Ok!** (el _alert_ menciona cada una para más claridad)
     - radio: **No conseguido** 
     
 4. Mostrar tabla de resultados XSLT al corregir mediante JavaScript 
