@@ -49,11 +49,8 @@ form {
     height: 100%;
 }
 #resultadosDiv {
-    text-align: center;
-    margin-bottom: 3%;
-    padding: 3%;
+	background-color: cyan;
 }
-
 .botoncorr {
     width: 30%;
     background-color: #1A57D1;
